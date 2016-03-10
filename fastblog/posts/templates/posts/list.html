@@ -6,3 +6,12 @@
     <li>{{ post.title }}</li>
   {% endfor %}
 </ul>
+
+
+<form action="{% url 'posts' %}" method="post">
+  {% csrf_token %}
+  <input type="text" name="title" />
+  <textarea name="content"></textarea>
+
+  <input type="submit" />
+</form>

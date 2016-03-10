@@ -4,6 +4,16 @@ from posts.models import Post
 
 
 def posts(request):
+
+    if request.method == "POST":
+        title = request.POST.get("title")
+        content = request.POST.get("content")
+
+        post = Post.objects.create(
+            title=title,
+            content=content,
+        )
+
     context = {
         "posts": Post.objects.all(),
     }
@@ -22,6 +32,6 @@ def post(request, post_id):
 
     return render(
         request,
-        "posts/list.html",
+        "posts/detail.html",
         context,
     )
