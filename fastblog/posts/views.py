@@ -13,3 +13,15 @@ def posts(request):
         "posts/list.html",
         context,
     )
+
+
+def post(request, post_id):
+    context = {
+        "post": Post.objects.get(pk=post_id),
+    }
+
+    return render(
+        request,
+        "posts/list.html",
+        context,
+    )

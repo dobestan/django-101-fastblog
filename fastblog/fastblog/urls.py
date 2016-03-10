@@ -17,7 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 
 from fastblog.views import home
-from posts.views import posts
+from posts.views import posts, post
 
 
 urlpatterns = [
@@ -25,4 +25,5 @@ urlpatterns = [
 
     url(r'^$', home, name="home"),
     url(r'^posts/$', posts, name="posts"),
+    url(r'^posts/(?P<post_id>\d+)/$', post, name="post"),
 ]
