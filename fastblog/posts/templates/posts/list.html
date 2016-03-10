@@ -1,17 +1,24 @@
-<h1>Posts List</h1>
-<p>This is posts list page.</p>
-
-<ul>
-  {% for post in posts %}
-    <li>{{ post.title }}</li>
-  {% endfor %}
-</ul>
+{% extends "base.html" %}
 
 
-<form action="{% url 'posts' %}" method="post">
-  {% csrf_token %}
-  <input type="text" name="title" />
-  <textarea name="content"></textarea>
+{% block title %}포스트 리스트 | 패스트블로그{% endblock %}
 
-  <input type="submit" />
-</form>
+{% block content %}
+  <h1>Posts List</h1>
+  <p>This is posts list page.</p>
+
+  <ul>
+    {% for post in posts %}
+      <li>{{ post.title }}</li>
+    {% endfor %}
+  </ul>
+
+
+  <form action="{% url 'posts' %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="title" />
+    <textarea name="content"></textarea>
+
+    <input type="submit" />
+  </form>
+{% endblock %}
