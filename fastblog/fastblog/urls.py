@@ -17,13 +17,13 @@ from django.conf.urls import url
 from django.contrib import admin
 
 from fastblog.views import home
-from posts.views import posts, post
+from posts.views import PostListView, PostDetailView
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     url(r'^$', home, name="home"),
-    url(r'^posts/$', posts, name="posts"),
-    url(r'^posts/(?P<post_id>\d+)/$', post, name="post"),
+    url(r'^posts/$', PostListView.as_view(), name="posts"),
+    url(r'^posts/(?P<pk>\d+)/$', PostDetailView.as_view(), name="post"),
 ]
