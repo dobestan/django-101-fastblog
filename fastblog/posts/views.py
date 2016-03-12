@@ -1,6 +1,5 @@
 from django.views.generic import View, ListView, DetailView
 from django.shortcuts import redirect
-from django.core.urlresolvers import reverse
 
 from posts.models import Post
 
@@ -24,11 +23,4 @@ def post_comments(request, pk):
         content=request.POST.get("content"),
     )
 
-    return redirect(
-        reverse(
-            "post",
-            kwargs={
-                "pk": post.id,
-            }
-        )
-    )
+    return redirect(post)
