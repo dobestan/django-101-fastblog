@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.urlresolvers import reverse
 
 
 class Comment(models.Model):
@@ -11,4 +12,17 @@ class Comment(models.Model):
         return 'Commented "{comment_content}" on "{post_title}"'.format(
             comment_content=self.content,
             post_title=self.post.title,
+        )
+
+    def get_absolute_url(self):
+        return "{post_url}{comment_tag_id}".format(
+            post_url = reverse(
+                "post",
+                kwargs={
+                    "pk": self.id,
+                }
+            ),
+            comment_tag_id = "#comment_{comment_id}".format(
+                comment_id=self.id,
+            ),
         )
