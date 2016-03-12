@@ -6,4 +6,13 @@
 {% block content %}
   <h1>{{ post.title }}</h1>
   <p>{{ post.content }}</p>
+
+  <h2>All Comments ( {{ post.comment_set.count }} )</h2>
+  <ul>
+    {% for comment in post.comment_set.all %}
+    <li>
+      {{ comment.content }}
+    </li>
+    {% endfor %}
+  </ul>
 {% endblock %}
