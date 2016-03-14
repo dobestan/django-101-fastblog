@@ -15,7 +15,7 @@ class PostBaseView(View):
 
 def posts(request):
     page = request.GET.get('page', 1)
-    posts_per_page = 3
+    posts_per_page = request.GET.get('per', 3)
 
     paginator = Paginator(
         Post.objects.all(),
