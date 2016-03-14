@@ -4,6 +4,11 @@ from posts.models import Post, Comment
 
 
 
+class CommentTabularInline(admin.TabularInline):
+
+    model = Comment
+
+
 class PostModelAdmin(admin.ModelAdmin):
 
     list_display = admin.ModelAdmin.list_display + (
@@ -26,6 +31,10 @@ class PostModelAdmin(admin.ModelAdmin):
     search_fields = (
         'title',
         'content',
+    )
+
+    inlines = (
+        CommentTabularInline,
     )
 
 
