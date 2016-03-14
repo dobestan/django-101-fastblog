@@ -26,9 +26,16 @@ def post_comments(request, pk):
     return redirect(post)
 
 
-def new_post(request):
+class PostCreateView(View):
 
-    if request.method == "POST":
+    def get(self, request):
+        return render(
+            request,
+            "posts/new.html",
+            context={}
+        )
+
+    def post(self, request):
         title = request.POST.get('title')
         content = request.POST.get('content')
         post = Post.objects.create(
@@ -37,9 +44,3 @@ def new_post(request):
         )
 
         return redirect(post)
-
-    return render(
-        request,
-        "posts/new.html",
-        context={}
-    )
