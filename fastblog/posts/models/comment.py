@@ -8,6 +8,10 @@ class Comment(models.Model):
         max_length=100,
     )
 
+    class Meta:
+        verbose_name = "댓글"
+        verbose_name_plural = verbose_name
+
     def __str__(self):
         return 'Commented "{comment_content}" on "{post_title}"'.format(
             comment_content=self.content,

@@ -8,6 +8,10 @@ class Post(models.Model):
     )
     content = models.TextField()
 
+    class Meta:
+        verbose_name = "포스트"
+        verbose_name_plural = verbose_name
+
     def __str__(self):
         return self.title
 
