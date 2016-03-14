@@ -8,6 +8,13 @@ class Comment(models.Model):
         max_length=100,
     )
 
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+    )
+    updated_at = models.DateTimeField(
+        auto_now=True,
+    )
+
     class Meta:
         verbose_name = "댓글"
         verbose_name_plural = verbose_name

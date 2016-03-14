@@ -8,6 +8,17 @@ class Post(models.Model):
     )
     content = models.TextField()
 
+    is_public = models.BooleanField(
+        default=True,
+    )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+    )
+    updated_at = models.DateTimeField(
+        auto_now=True,
+    )
+
     class Meta:
         verbose_name = "포스트"
         verbose_name_plural = verbose_name
