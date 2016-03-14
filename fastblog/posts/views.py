@@ -26,16 +26,9 @@ def post_comments(request, pk):
     return redirect(post)
 
 
-class PostCreateView(CreateView):
-    model = Post
+class PostCreateView(PostBaseView, CreateView):
+    template_name = "posts/new.html"
     fields = [
         'title',
         'content',
     ]
-
-    def get(self, request):
-        return render(
-            request,
-            "posts/new.html",
-            context={}
-        )
