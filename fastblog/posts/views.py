@@ -1,4 +1,4 @@
-from django.views.generic import View, ListView, DetailView
+from django.views.generic import View, ListView, DetailView, CreateView
 from django.shortcuts import redirect, render
 
 from posts.models import Post
@@ -26,7 +26,12 @@ def post_comments(request, pk):
     return redirect(post)
 
 
-class PostCreateView(View):
+class PostCreateView(CreateView):
+    model = Post
+    fields = [
+        'title',
+        'content',
+    ]
 
     def get(self, request):
         return render(
@@ -34,13 +39,3 @@ class PostCreateView(View):
             "posts/new.html",
             context={}
         )
-
-    def post(self, request):
-        title = request.POST.get('title')
-        content = request.POST.get('content')
-        post = Post.objects.create(
-            title=title,
-            content=content,
-        )
-
-        return redirect(post)
