@@ -4,3 +4,13 @@
   <li><a href="{% url 'home' %}">home</a></li>
   <li><a href="{% url 'posts' %}">posts</a></li>
 </ul>
+
+<div>
+  <p>
+    {% if request.user.is_authenticated %}
+      {{ request.user.username }} 으로 로그인 되었습니다.
+    {% else %}
+      현재 로그인된 상태가 아닙니다.
+    {% endif %}
+  </p>
+</div>
