@@ -3,6 +3,13 @@
 <ul>
   <li><a href="{% url 'home' %}">home</a></li>
   <li><a href="{% url 'posts' %}">posts</a></li>
+
+  {% if request.user.is_authenticated %}
+    <li><a href="{% url 'logout' %}">로그아웃</a></li>
+  {% else %}
+    <li><a href="{% url 'login' %}">로그인</a></li>
+    <li><a href="{% url 'signup' %}">회원가입</a></li>
+  {% endif %}
 </ul>
 
 <div>
