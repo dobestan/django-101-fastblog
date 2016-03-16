@@ -18,7 +18,8 @@ from django.contrib import admin
 
 from fastblog.views import home
 from posts.views import PostListView, PostDetailView, post_comments, PostCreateView
-from users.views import LoginView, LogoutView, SignupView
+from users.views import LoginView, LogoutView, SignupView,\
+    login_required_view, LoginRequiredView
 
 
 urlpatterns = [
@@ -33,4 +34,7 @@ urlpatterns = [
     url(r'^login/$', LoginView.as_view(), name="login"),
     url(r'^logout/$', LogoutView.as_view(), name="logout"),
     url(r'^signup/$', SignupView.as_view(), name="signup"),
+
+    url(r'^login_required/fbv/$', login_required_view, name="login-required-fbv"),
+    url(r'^login_required/cbv/$', LoginRequiredView.as_view(), name="login-required-cbv"),
 ]
