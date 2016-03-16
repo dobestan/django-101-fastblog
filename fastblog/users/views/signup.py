@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
+from django.contrib import messages
 
 
 class SignupView(View):
@@ -29,5 +30,11 @@ class SignupView(View):
             password=password,
         )
         login(request, user)
+
+        messages.add_message(
+            request,
+            messages.SUCCESS,
+            "성공적으로 회원가입 되었습니다.",
+        )
 
         return redirect(reverse("home"))
