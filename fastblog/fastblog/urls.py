@@ -18,7 +18,7 @@ from django.contrib import admin
 
 from fastblog.views import home
 from posts.views import PostListView, PostDetailView, post_comments, PostCreateView
-from users.views import LoginView, LogoutView
+from users.views import LoginView, LogoutView, SignupView
 
 
 urlpatterns = [
@@ -32,4 +32,5 @@ urlpatterns = [
 
     url(r'^login/$', LoginView.as_view(), name="login"),
     url(r'^logout/$', LogoutView.as_view(), name="logout"),
+    url(r'^signup/$', SignupView.as_view(), name="signup"),
 ]
