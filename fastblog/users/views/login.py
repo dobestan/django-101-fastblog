@@ -17,6 +17,7 @@ class LoginView(View):
     def post(self, request):
         username = request.POST.get("username")
         password = request.POST.get("password")
+        next_page = request.POST.get("next") or reverse("home")
 
         user = authenticate(
             username=username,
@@ -30,5 +31,6 @@ class LoginView(View):
                 messages.SUCCESS,
                 "성공적으로 로그인 되었습니다.",
             )
-            return redirect(reverse("home"))
+
+            return redirect(next_page)
         return redirect(reverse("login"))
