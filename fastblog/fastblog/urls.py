@@ -19,7 +19,7 @@ from django.contrib import admin
 from fastblog.views import home
 from posts.views import PostListView, PostDetailView, PostCommentCreateView, PostCreateView
 from users.views import LoginView, LogoutView, SignupView,\
-    login_required_view, LoginRequiredView
+    login_required_view, LoginRequiredView, ProfileView
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -37,7 +37,9 @@ urlpatterns = [
     url(r'^login/$', LoginView.as_view(), name="login"),
     url(r'^logout/$', LogoutView.as_view(), name="logout"),
     url(r'^signup/$', SignupView.as_view(), name="signup"),
+    url(r'^profile/$', ProfileView.as_view(), name="profile"),
 
     url(r'^login_required/fbv/$', login_required_view, name="login-required-fbv"),
     url(r'^login_required/cbv/$', LoginRequiredView.as_view(), name="login-required-cbv"),
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
