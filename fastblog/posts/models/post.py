@@ -9,6 +9,11 @@ class Post(models.Model):
         User,
     )
 
+    thumbnail_image = models.ImageField(
+        blank=True,
+        null=True,
+    )
+
     title = models.CharField(
         max_length=20,
     )

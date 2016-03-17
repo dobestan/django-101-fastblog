@@ -11,6 +11,12 @@
     {% for post in posts %}
       <li>
         <a href="{% url "post" post.id %}">
+          <img
+             src="{% if post.thumbnail_image %}{{ post.thumbnail_image.url }}{% else %}http://placehold.it/200x150{% endif %}"
+            alt="{{ post.title }}"
+            width="200px"
+            height="150px"
+          />
           {{ post.title }} by @{{ post.user.username }}
         </a>
       </li>

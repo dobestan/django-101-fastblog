@@ -21,6 +21,9 @@ from posts.views import PostListView, PostDetailView, PostCommentCreateView, Pos
 from users.views import LoginView, LogoutView, SignupView,\
     login_required_view, LoginRequiredView
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -37,4 +40,4 @@ urlpatterns = [
 
     url(r'^login_required/fbv/$', login_required_view, name="login-required-fbv"),
     url(r'^login_required/cbv/$', LoginRequiredView.as_view(), name="login-required-cbv"),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
