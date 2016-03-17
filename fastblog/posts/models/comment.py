@@ -36,7 +36,7 @@ class Comment(models.Model):
             post_url = reverse(
                 "post",
                 kwargs={
-                    "pk": self.id,
+                    "pk": self.post.id,
                 }
             ),
             comment_tag_id = "#comment_{comment_id}".format(

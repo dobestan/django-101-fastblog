@@ -17,7 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 
 from fastblog.views import home
-from posts.views import PostListView, PostDetailView, post_comments, PostCreateView
+from posts.views import PostListView, PostDetailView, PostCommentCreateView, PostCreateView
 from users.views import LoginView, LogoutView, SignupView,\
     login_required_view, LoginRequiredView
 
@@ -29,7 +29,7 @@ urlpatterns = [
     url(r'^posts/$', PostListView.as_view(), name="posts"),
     url(r'^posts/new/$', PostCreateView.as_view(), name="new-post"),
     url(r'^posts/(?P<pk>\d+)/$', PostDetailView.as_view(), name="post"),
-    url(r'^posts/(?P<pk>\d+)/comments/$', post_comments, name="post-comments"),
+    url(r'^posts/(?P<pk>\d+)/comments/$', PostCommentCreateView.as_view(), name="post-comments"),
 
     url(r'^login/$', LoginView.as_view(), name="login"),
     url(r'^logout/$', LogoutView.as_view(), name="logout"),

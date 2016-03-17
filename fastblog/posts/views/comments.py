@@ -1,11 +1,22 @@
-from django.shortcuts import redirect, render
-from posts.models import Post
+from django.views.generic import CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+from posts.models import Post, Comment
 
 
-def post_comments(request, pk):
-    post = Post.objects.get(pk=pk)
-    comment = post.comment_set.create(
-        content=request.POST.get("content"),
-    )
+class PostCommentCreateView(LoginRequiredMixin, CreateView):
+    model = Comment
+    fields = [
+        'content',
+    ]
 
-    return redirect(post)
+    def form_valid(self, form):
+        # User
+        form.instance.user = self.request.user
+
+        # Post
+        form.instance.post = Post.objects.get(
+            pk=self.kwargs.get('pk'),
+        )
+
+        return super(PostCommentCreateView, self).form_valid(form)
