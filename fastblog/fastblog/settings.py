@@ -132,6 +132,10 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = os.path.join(PROJECT_ROOT_DIR, "dist/static/")
 MEDIA_ROOT = os.path.join(PROJECT_ROOT_DIR, "dist/media/")
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'fastblog', 'static'),
+)
+
 
 AUTH_USER_MODEL = "users.User"
 LOGIN_URL = "/login/"
