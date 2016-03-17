@@ -9,16 +9,11 @@
 
   <ul>
     {% for post in posts %}
-      <li>{{ post.title }}</li>
+      <li>
+        <a href="{% url "post" post.id %}">
+          {{ post.title }} by @{{ post.user.username }}
+        </a>
+      </li>
     {% endfor %}
   </ul>
-
-
-  <form action="{% url 'posts' %}" method="post">
-    {% csrf_token %}
-    <input type="text" name="title" />
-    <textarea name="content"></textarea>
-
-    <input type="submit" />
-  </form>
 {% endblock %}
