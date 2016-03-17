@@ -129,3 +129,9 @@ STATIC_URL = '/static/'
 
 
 LOGIN_URL = "/login/"
+
+
+# SMS API
+SMS_API_CLIENT_ID = os.environ.get("SMS_API_CLIENT_ID")
+SMS_API_AUTHORIZATION_KEY = os.environ.get("SMS_API_AUTHORIZATION_KEY")
+SMS_API_SEND_PHONE = os.environ.get("SMS_API_SEND_PHONE")
