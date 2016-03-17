@@ -6,8 +6,9 @@
 
 <form action="{% url "signup" %}" method="post">
   {% csrf_token %}
-  <input type="text" name="username">
-  <input type="password" name="password">
+  <input type="text" name="username" placeholder="username">
+  <input type="password" name="password" placeholder="password">
+  <input type="phonenumber" name="phonenumber" placeholder="phonenumber">
   <input type="submit">
 </form>
 {% endblock %}

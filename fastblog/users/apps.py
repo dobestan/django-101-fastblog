@@ -5,4 +5,4 @@ class UsersAppConfig(AppConfig):
     name = 'users'
 
     def ready(self):
-        pass
+        from users.signals.post_save import post_save_user
