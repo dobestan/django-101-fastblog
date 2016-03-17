@@ -1,8 +1,14 @@
 from django.db import models
 from django.core.urlresolvers import reverse
 
+from users.models import User
+
 
 class Comment(models.Model):
+    user = models.ForeignKey(
+        User,
+    )
+
     post = models.ForeignKey("Post")
     content = models.CharField(
         max_length=100,
