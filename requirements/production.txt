@@ -2,3 +2,4 @@ Django==1.9.4
 requests
 Pillow
 bs4
+celery[redis]
