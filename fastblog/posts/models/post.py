@@ -1,8 +1,19 @@
 from django.db import models
 from django.core.urlresolvers import reverse
 
+from users.models import User
+
 
 class Post(models.Model):
+    user = models.ForeignKey(
+        User,
+    )
+
+    thumbnail_image = models.ImageField(
+        blank=True,
+        null=True,
+    )
+
     title = models.CharField(
         max_length=20,
     )

@@ -9,16 +9,17 @@
 
   <ul>
     {% for post in posts %}
-      <li>{{ post.title }}</li>
+      <li>
+        <a href="{% url "post" post.id %}">
+          <img
+             src="{% if post.thumbnail_image %}{{ post.thumbnail_image.url }}{% else %}http://placehold.it/200x150{% endif %}"
+            alt="{{ post.title }}"
+            width="200px"
+            height="150px"
+          />
+          {{ post.title }} by @{{ post.user.username }}
+        </a>
+      </li>
     {% endfor %}
   </ul>
-
-
-  <form action="{% url 'posts' %}" method="post">
-    {% csrf_token %}
-    <input type="text" name="title" />
-    <textarea name="content"></textarea>
-
-    <input type="submit" />
-  </form>
 {% endblock %}

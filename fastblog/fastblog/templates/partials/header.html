@@ -1,23 +1,25 @@
-<h1>Header</h1>
+<header>
+  <h1>Header</h1>
 
-<ul>
-  <li><a href="{% url 'home' %}">home</a></li>
-  <li><a href="{% url 'posts' %}">posts</a></li>
+  <ul>
+    <li><a href="{% url 'home' %}">home</a></li>
+    <li><a href="{% url 'posts' %}">posts</a></li>
 
-  {% if request.user.is_authenticated %}
-    <li><a href="{% url 'logout' %}">로그아웃</a></li>
-  {% else %}
-    <li><a href="{% url 'login' %}">로그인</a></li>
-    <li><a href="{% url 'signup' %}">회원가입</a></li>
-  {% endif %}
-</ul>
-
-<div>
-  <p>
     {% if request.user.is_authenticated %}
-      {{ request.user.username }} 으로 로그인 되었습니다.
+      <li><a href="{% url 'logout' %}">로그아웃</a></li>
     {% else %}
-      현재 로그인된 상태가 아닙니다.
+      <li><a href="{% url 'login' %}">로그인</a></li>
+      <li><a href="{% url 'signup' %}">회원가입</a></li>
     {% endif %}
-  </p>
-</div>
+  </ul>
+
+  <div>
+    <p>
+      {% if request.user.is_authenticated %}
+        {{ request.user.username }} 으로 로그인 되었습니다.
+      {% else %}
+        현재 로그인된 상태가 아닙니다.
+      {% endif %}
+    </p>
+  </div>
+</header>

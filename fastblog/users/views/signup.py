@@ -2,7 +2,7 @@ from django.views.generic import View
 from django.shortcuts import render, redirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, get_user_model
 from django.contrib import messages
 
 
@@ -18,10 +18,12 @@ class SignupView(View):
     def post(self, request):
         username = request.POST.get("username")
         password = request.POST.get("password")
+        phonenumber = request.POST.get("phonenumber")
 
-        user = User.objects.create_user(
+        user = get_user_model().objects.create_user(
             username=username,
             password=password,
+            phonenumber=phonenumber,
         )
 
         # 회원가입 후 자동 로그인 구현하기

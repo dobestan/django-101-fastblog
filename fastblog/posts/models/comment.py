@@ -1,8 +1,14 @@
 from django.db import models
 from django.core.urlresolvers import reverse
 
+from users.models import User
+
 
 class Comment(models.Model):
+    user = models.ForeignKey(
+        User,
+    )
+
     post = models.ForeignKey("Post")
     content = models.CharField(
         max_length=100,
@@ -30,7 +36,7 @@ class Comment(models.Model):
             post_url = reverse(
                 "post",
                 kwargs={
-                    "pk": self.id,
+                    "pk": self.post.id,
                 }
             ),
             comment_tag_id = "#comment_{comment_id}".format(
