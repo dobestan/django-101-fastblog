@@ -4,7 +4,8 @@ from django.db import models
 class SocialPost(models.Model):
 
     keyword = models.ForeignKey(
-        "Keyword"
+        "Keyword",
+        related_name="social_post_set",
     )
 
     provider = models.CharField(
