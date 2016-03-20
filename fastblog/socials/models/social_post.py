@@ -3,7 +3,7 @@ from django.db import models
 
 class SocialPost(models.Model):
 
-    Keyword = models.ForeignKey(
+    keyword = models.ForeignKey(
         "Keyword"
     )
 
@@ -24,3 +24,9 @@ class SocialPost(models.Model):
     updated_at = models.DateTimeField(
         auto_now=True,
     )
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return self.original_url
