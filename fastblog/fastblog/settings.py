@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'fastblog',
     'posts',
     'users',
+    'socials',
 ]
 
 MIDDLEWARE_CLASSES = [
