@@ -18,7 +18,7 @@ class Command(BaseCommand):
         keyword = options['keyword']
 
         self.stdout.write(
-            "{provider} 에서 '{keyword}' 크롤링을 시작합니다.".format(
+            "{provider} 에서 '{keyword}' 크롤링이 자동으로 시작됩니다.".format(
                 provider="네이버",
                 keyword=keyword,
             )
@@ -28,10 +28,4 @@ class Command(BaseCommand):
             name=keyword,
         )
 
-        keyword.crawl_all_providers()
-
-        self.stdout.write("{provider}에서 '{keyword}' 키워드로 {social_posts_count}개의 블로그글을 가져왔습니다.".format(
-            provider="네이버",
-            keyword=keyword.name,
-            social_posts_count=keyword.social_post_set.count(),
-        ))
+        # keyword.crawl_all_providers()
