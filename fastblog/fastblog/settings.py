@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'fastblog',
     'posts',
     'users',
+    'socials',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -145,3 +146,7 @@ LOGIN_URL = "/login/"
 SMS_API_CLIENT_ID = os.environ.get("SMS_API_CLIENT_ID")
 SMS_API_AUTHORIZATION_KEY = os.environ.get("SMS_API_AUTHORIZATION_KEY")
 SMS_API_SEND_PHONE = os.environ.get("SMS_API_SEND_PHONE")
+
+
+# Celery Settings
+BROKER_URL = "redis://localhost:6379/0"
