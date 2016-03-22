@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'posts',
     'users',
     'socials',
+    'communications',
 ]
 
 MIDDLEWARE_CLASSES = [
