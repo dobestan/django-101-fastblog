@@ -6,11 +6,15 @@ from .comment import CommentListSerializer
 
 class PostBaseSerializer(serializers.ModelSerializer):
 
+    username = serializers.CharField(source='user.username', )
+
     class Meta:
         model = Post
         fields = (
             'title',
             'content',
+
+            'username',
         )
 
 
