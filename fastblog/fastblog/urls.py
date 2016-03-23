@@ -16,10 +16,14 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
+# HTML View
 from fastblog.views import home
 from posts.views import PostListView, PostDetailView, PostCommentCreateView, PostCreateView
 from users.views import LoginView, LogoutView, SignupView,\
     login_required_view, LoginRequiredView, ProfileView
+
+# API View
+from posts.api import PostListAPIView, PostDetailAPIView, PostCommentListAPIView
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -35,6 +39,10 @@ urlpatterns = [
     url(r'^posts/new/$', PostCreateView.as_view(), name="new-post"),
     url(r'^posts/(?P<pk>\d+)/$', PostDetailView.as_view(), name="post"),
     url(r'^posts/(?P<pk>\d+)/comments/$', PostCommentCreateView.as_view(), name="post-comments"),
+
+    url(r'^api/posts/$', PostListAPIView.as_view(), name="api-posts"),
+    url(r'^api/posts/(?P<pk>\d+)/$', PostDetailAPIView.as_view(), name="api-post"),
+    url(r'^api/posts/(?P<pk>\d+)/comments/$', PostCommentListAPIView.as_view(), name="api-post-comments"),
 
     url(r'^login/$', LoginView.as_view(), name="login"),
     url(r'^logout/$', LogoutView.as_view(), name="logout"),
