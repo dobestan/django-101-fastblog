@@ -1,19 +1,9 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
-
+from rest_framework.generics import ListAPIView
 
 from posts.models import Post
+from posts.serializers.post import PostBaseSerializer
 
 
-class PostListAPIView(APIView):
-
-    def get(self, request):
-
-        posts = Post.objects.all()
-        data = [
-            post.get_object_dict()
-            for post
-            in posts
-        ]
-
-        return Response(data)
+class PostListAPIView(ListAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostBaseSerializer
