@@ -3,3 +3,5 @@ requests
 Pillow
 bs4
 celery[redis]
+honcho
+python-social-auth

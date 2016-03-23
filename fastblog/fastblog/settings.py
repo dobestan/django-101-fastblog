@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django_extensions',
     'debug_toolbar',
 
+    'social.apps.django_app.default',
+
     'fastblog',
     'posts',
     'users',
@@ -73,6 +75,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'social.apps.django_app.context_processors.backends',
+                'social.apps.django_app.context_processors.login_redirect',
             ],
         },
     },
@@ -151,3 +156,18 @@ SMS_API_SEND_PHONE = os.environ.get("SMS_API_SEND_PHONE")
 
 # Celery Settings
 BROKER_URL = "redis://localhost:6379/0"
+
+
+# Auth
+AUTHENTICATION_BACKENDS = [
+    'social.backends.facebook.FacebookOAuth2',
+    'social.backends.kakao.KakaoOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+SOCIAL_AUTH_FACEBOOK_KEY = os.environ.get("SOCIAL_AUTH_FACEBOOK_KEY")
+SOCIAL_AUTH_FACEBOOK_SECRET = os.environ.get("SOCIAL_AUTH_FACEBOOK_SECRET")
+
+SOCIAL_AUTH_KAKAO_KEY = os.environ.get("SOCIAL_AUTH_KAKAO_KEY")
+SOCIAL_AUTH_KAKAO_SECRET = os.environ.get("SOCIAL_AUTH_KAKAO_SECRET")
