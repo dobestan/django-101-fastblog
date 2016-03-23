@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
 
     'social.apps.django_app.default',
+    'rest_framework',
 
     'fastblog',
     'posts',

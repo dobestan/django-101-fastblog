@@ -1,12 +1,10 @@
-from django.views.generic import View
-from django.http import HttpResponse
-
-import json
+from rest_framework.views import APIView
+from rest_framework.response import Response
 
 from posts.models import Post
 
 
-class PostCommentListAPIView(View):
+class PostCommentListAPIView(APIView):
 
     def get(self, request, **kwargs):
         post = Post.objects.get(pk=kwargs.get('pk'))
@@ -17,7 +15,4 @@ class PostCommentListAPIView(View):
             in post.comment_set.all()
         ]
 
-        return HttpResponse(
-            json.dumps(data),
-            content_type="application/json",
-        )
+        return Response(data)
