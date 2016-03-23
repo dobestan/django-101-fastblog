@@ -50,3 +50,7 @@ class Post(models.Model):
             "title": self.title,
             "content": self.content,
         }
+
+    @property
+    def comments(self):
+        return self.comment_set.all()

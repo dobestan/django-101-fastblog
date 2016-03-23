@@ -1,19 +1,9 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
+from rest_framework.generics import RetrieveAPIView
 
 from posts.models import Post
+from posts.serializers.post import PostDetailSerializer
 
 
-class PostDetailAPIView(APIView):
-
-    def get(self, request, **kwargs):
-        post = Post.objects.get(pk=kwargs.get('pk'))
-
-        data = post.get_object_dict()
-        data["comments"] = [
-            comment.get_object_dict()
-            for comment
-            in post.comment_set.all()
-        ]
-
-        return Response(data)
+class PostDetailAPIView(RetrieveAPIView):
+    queryset = Post.objects.all()
+    serializer_class = PostDetailSerializer
