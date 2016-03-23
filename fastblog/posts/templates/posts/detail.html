@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 
 
 {% block title %}{{ post.title }} | 패스트블로그{% endblock %}
@@ -7,13 +8,8 @@
   <h1>{{ post.title }}</h1>
   <p>{{ post.content }}</p>
 
-  <h2>All Comments ( {{ post.comment_set.count }} )</h2>
-  <ul>
-    {% for comment in post.comment_set.all %}
-    <li id="comment_{{ comment.id }}">
-      {{ comment.content }} by @{{ comment.user.username }}
-    </li>
-    {% endfor %}
+  <h2>All Comments</h2>
+  <ul id="comments" data-post-id={{ post.id }}>
   </ul>
 
   <form action="/posts/{{ post.id }}/comments/" method="post">
@@ -21,4 +17,8 @@
     <input type="text" name="content">
     <input type="submit">
   </form>
+{% endblock %}
+
+{% block custom_script %}
+<script type="text/javascript" src={% static "js/posts/detail.js" %}></script>
 {% endblock %}
