@@ -1,9 +1,8 @@
 from rest_framework.generics import RetrieveAPIView
 
-from posts.models import Post
 from posts.serializers.post import PostDetailSerializer
+from .base import PostBaseAPIView
 
 
-class PostDetailAPIView(RetrieveAPIView):
-    queryset = Post.objects.all()
+class PostDetailAPIView(PostBaseAPIView, RetrieveAPIView):
     serializer_class = PostDetailSerializer
