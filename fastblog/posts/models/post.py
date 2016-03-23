@@ -4,7 +4,19 @@ from django.core.urlresolvers import reverse
 from users.models import User
 
 
+class PostManager(models.Manager):
+
+    def get_queryset(self):
+        queryset = super(PostManager, self).get_queryset()
+        return queryset.select_related(
+            'user',
+        )
+
+
 class Post(models.Model):
+
+    objects = PostManager()
+
     user = models.ForeignKey(
         User,
     )
