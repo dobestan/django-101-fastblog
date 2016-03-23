@@ -44,3 +44,9 @@ class Post(models.Model):
                 "pk": self.id,
             }
         )
+
+    def get_object_dict(self):
+        return {
+            "title": self.title,
+            "content": self.content,
+        }

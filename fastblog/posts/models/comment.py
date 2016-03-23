@@ -43,3 +43,8 @@ class Comment(models.Model):
                 comment_id=self.id,
             ),
         )
+
+    def get_object_dict(self):
+        return {
+            "content": self.content,
+        }
