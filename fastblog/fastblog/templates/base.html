@@ -4,6 +4,7 @@
   <head>
     <meta charset="utf-8">
     <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static "css/application.css" %}" type="text/css">
   </head>
   <body>
@@ -14,5 +15,8 @@
     {% endblock %}
 
     {% include "partials/footer.html" %}
+    <script src="https://code.jquery.com/jquery-2.2.2.min.js" integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI=" crossorigin="anonymous"></script>
+    <script src="{% static "js/application.js" %}"></script>
+    {% block custom_script %}{% endblock %}
   </body>
 </html>
