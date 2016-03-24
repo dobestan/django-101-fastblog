@@ -1,24 +1,8 @@
-from django.views.generic import View
+from rest_framework.generics import ListAPIView
 
-from django.http import HttpResponse
-
-import json
-
-from posts.models import Post
+from posts.serializers.post import PostListSerializer
+from .base import PostBaseAPIView
 
 
-class PostListAPIView(View):
-
-    def get(self, request):
-
-        posts = Post.objects.all()
-        data = [
-            post.get_object_dict()
-            for post
-            in posts
-        ]
-
-        return HttpResponse(
-            json.dumps(data),
-            content_type="application/json",
-        )
+class PostListAPIView(PostBaseAPIView, ListAPIView):
+    serializer_class = PostListSerializer

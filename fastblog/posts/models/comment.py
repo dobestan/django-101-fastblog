@@ -4,7 +4,20 @@ from django.core.urlresolvers import reverse
 from users.models import User
 
 
+class CommentManager(models.Manager):
+
+    def get_queryset(self):
+        queryset = super(CommentManager, self).get_queryset()
+        return queryset.select_related(
+            'post',
+            'user',
+        )
+
+
 class Comment(models.Model):
+
+    objects = CommentManager()
+
     user = models.ForeignKey(
         User,
     )
